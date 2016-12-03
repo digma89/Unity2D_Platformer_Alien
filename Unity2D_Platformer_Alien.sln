@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{4BA15D70-1336-BB9F-B284-DFBBFECA47C5}") = "Unity2D_Platformer_Alien", "Assembly-CSharp.csproj", "{24A51671-47BF-B07E-5C55-ACCA7596A7F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24A51671-47BF-B07E-5C55-ACCA7596A7F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A51671-47BF-B07E-5C55-ACCA7596A7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A51671-47BF-B07E-5C55-ACCA7596A7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A51671-47BF-B07E-5C55-ACCA7596A7F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
