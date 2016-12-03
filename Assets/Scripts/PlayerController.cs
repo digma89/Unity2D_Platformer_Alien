@@ -28,43 +28,43 @@ public class PlayerController : MonoBehaviour {
     public AudioSource CoinSound;
     public AudioSource DeathPlaneSound;
 
+    [Header("Equiped")]
+    public GameObject BulletObject;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start() {
         this._initialize();
-	
-	}
-	
-	// Update is called once per frame (Physics)
-	void FixedUpdate () {
 
-        if (_isGrounded)
-        {
+    }
+
+    // Update is called once per frame (Physics)
+    void FixedUpdate() {
+
+        if (Input.GetMouseButtonDown(0)) {
+            var clone = Instantiate(BulletObject, this._transform.position, this._transform.rotation);
+        }
+
+        if (_isGrounded) {
             //check if input is present for movment
             this._move = Input.GetAxis("Horizontal");
-            if (this._move > 0f)
-            {
+            if (this._move > 0f) {
                 this._animator.SetInteger("HeroState", 1);
                 this._move = 1;
                 this.isFacingRight = true;
                 this.flip();
-            }
-            else if (this._move < 0f)
-            {
+            } else if (this._move < 0f) {
                 this._animator.SetInteger("HeroState", 1);
                 this._move = -1;
                 this.isFacingRight = false;
                 this.flip();
-            }
-            else
-            {
+            } else {
                 //set animator state 
                 this._animator.SetInteger("HeroState", 0);
                 this._move = 0f;
             }
             //to jump
-            if (Input.GetKeyDown(KeyCode.Space))
-            {                
+            if (Input.GetKeyDown(KeyCode.Space)) {
                 this._animator.SetInteger("HeroState", 2);
                 this._jump = 1f;
                 this.JumpSound.Play();
@@ -72,26 +72,23 @@ public class PlayerController : MonoBehaviour {
 
             }
 
-            this._rigidbody.AddForce(new Vector2(this._move * this.Velocity, this._jump * this.JumpForce), ForceMode2D.Force );
-        }
-        else
-        {
+            this._rigidbody.AddForce(new Vector2(this._move * this.Velocity, this._jump * this.JumpForce), ForceMode2D.Force);
+        } else {
             this._move = 0f;
             this._jump = 0f;
         }
-        
+
 
         this._camera.transform.position = new Vector3(this._transform.position.x, this._transform.position.y, -10f);
-        
-	}
+
+    }
 
 
     /*Methods/**
      * 
     *This method initialize variables and objects when called
     */
-    private void _initialize()
-    {
+    private void _initialize() {
         this._transform = GetComponent<Transform>();
         this._rigidbody = GetComponent<Rigidbody2D>();
         this._animator = GetComponent<Animator>();
@@ -110,57 +107,48 @@ public class PlayerController : MonoBehaviour {
     /*
      *This method flips the character's bitmap the x-axis
      *  * */
-    private void flip(){
-        if(this.isFacingRight){
-            this._transform.localScale = new Vector2 (1f,1f);
-        }else{
+    private void flip() {
+        if (this.isFacingRight) {
+            this._transform.localScale = new Vector2(1f, 1f);
+        } else {
             this._transform.localScale = new Vector2(-1f, 1f);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("DeathPlane"))
-        {
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("DeathPlane")) {
             //move player position to spawn point's position
             this.DeathPlaneSound.Play();
             this._transform.position = this._spawnPoint.transform.position;
-            this._gameController.LivesValue -= 1;            
+            this._gameController.LivesValue -= 1;
         }
 
-        if (other.gameObject.CompareTag("GameFinished"))
-        {
+        if (other.gameObject.CompareTag("GameFinished")) {
             this._animatorGameEnded.SetInteger("GameEnded", 1);
             this._gameController._wonGame();
         }
 
-        if (other.gameObject.CompareTag("LevelFinished"))
-        {
+        if (other.gameObject.CompareTag("LevelFinished")) {
             //this._animatorGameEnded.SetInteger("GameEnded", 1);
             this._gameController._level2();
-        }  
+        }
     }
 
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("PlatformIce"))
-        {
+    private void OnCollisionStay2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("PlatformIce")) {
             this._isGrounded = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
+    private void OnCollisionExit2D(Collision2D other) {
 
         this._animator.SetInteger("HeroState", 2);
         this._isGrounded = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
+    void OnTriggerEnter2D(Collider2D other) {
         //when pick up a coin
-        if (other.gameObject.CompareTag("Coin"))
-        {
+        if (other.gameObject.CompareTag("Coin")) {
             //coin score +100
             this.CoinSound.Play();
             this._gameController.ScoreValue += 100;
