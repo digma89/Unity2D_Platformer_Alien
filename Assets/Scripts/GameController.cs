@@ -10,9 +10,9 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 	// PRIVATE INSTANCE VARIABLES ++++++++++++++++++
 	private int _livesValue;
-	private int _scoreValue;
-
-	[Header("UI Objects")]
+    private int _scoreValue;
+    
+    [Header("UI Objects")]
 	public Text LivesLabel;
 	public Text ScoreLabel;
     public Text GameOverLabel;
@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.LivesValue = 5;
-		this.ScoreValue = 0;
+		this.ScoreValue = PlayerPrefs.GetInt("HiScore");
         this.GameOverLabel.gameObject.SetActive(false);
         this.FinalScoreLabel.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(false);
@@ -70,6 +70,8 @@ public class GameController : MonoBehaviour {
         this.FinalScoreLabel.gameObject.SetActive(true);
         this.RestartButton.gameObject.SetActive(true);
         this.Hero.SetActive(false);
+        this._scoreValue = 0;
+        PlayerPrefs.SetInt("HiScore", _scoreValue);
     }
 
     public void _wonGame()
@@ -83,11 +85,14 @@ public class GameController : MonoBehaviour {
 
     public void _level2()
     {
+        PlayerPrefs.SetInt("HiScore", _scoreValue);
         SceneManager.LoadScene("Level_2");
     }
 
     public void RestartButton_Click()
     {
+        this._scoreValue = 0;
+        PlayerPrefs.SetInt("HiScore", _scoreValue);
         SceneManager.LoadScene("MainScene");   
     }
 		
