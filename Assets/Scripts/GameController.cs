@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
     public Text FinalScoreLabel;
     public Text youWon;
     public Button RestartButton;
+    public Button RestartButton2;
     public GameObject Hero;
 
 	// PUBLIC PROPERTIES +++++++++++++++++++++++++++
@@ -56,6 +57,7 @@ public class GameController : MonoBehaviour {
         this.GameOverLabel.gameObject.SetActive(false);
         this.FinalScoreLabel.gameObject.SetActive(false);
         this.RestartButton.gameObject.SetActive(false);
+        this.RestartButton2.gameObject.SetActive(false);
         this.youWon.gameObject.SetActive(false);
 
 	}
@@ -69,6 +71,7 @@ public class GameController : MonoBehaviour {
         this.FinalScoreLabel.text = "Final Score: " + this.ScoreValue;
         this.FinalScoreLabel.gameObject.SetActive(true);
         this.RestartButton.gameObject.SetActive(true);
+        this.RestartButton2.gameObject.SetActive(true);
         this.Hero.SetActive(false);
         this._scoreValue = 0;
         PlayerPrefs.SetInt("HiScore", _scoreValue);
@@ -80,6 +83,7 @@ public class GameController : MonoBehaviour {
         this.FinalScoreLabel.text = "Final Score: " + this.ScoreValue;
         this.FinalScoreLabel.gameObject.SetActive(true);
         this.RestartButton.gameObject.SetActive(true);
+        this.RestartButton2.gameObject.SetActive(true);
         this.Hero.SetActive(false);
     }
 
@@ -89,11 +93,23 @@ public class GameController : MonoBehaviour {
         SceneManager.LoadScene("Level_2");
     }
 
+    public void _level3()
+    {
+        PlayerPrefs.SetInt("HiScore", _scoreValue);
+        SceneManager.LoadScene("Level_3");
+    }
+
     public void RestartButton_Click()
     {
         this._scoreValue = 0;
         PlayerPrefs.SetInt("HiScore", _scoreValue);
         SceneManager.LoadScene("MainScene");   
     }
-		
+    public void RestartLevel2Button_Click()
+    {
+        this._scoreValue = 0;
+        PlayerPrefs.SetInt("HiScore", _scoreValue);
+        SceneManager.LoadScene("Level_2");
+    }
+
 }

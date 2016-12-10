@@ -128,6 +128,11 @@ public class PlayerLevel2Controller : MonoBehaviour {
             //this._animatorGameEnded.SetInteger("GameEnded", 1);
             this._gameController._level2();
         }
+        if (other.gameObject.CompareTag("LevelFinished2"))
+        {
+            //this._animatorGameEnded.SetInteger("GameEnded", 1);
+            this._gameController._level3();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D other) {

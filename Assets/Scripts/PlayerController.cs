@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour {
             //this._animatorGameEnded.SetInteger("GameEnded", 1);
             this._gameController._level2();
         }
+   
     }
 
     private void OnCollisionStay2D(Collision2D other) {
