@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CheckPoint.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\EnemyFly.cs" />
      <Compile Include="Assets\Scripts\EnemyGhostController.cs" />
      <Compile Include="Assets\Scripts\EnemyShipController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
@@ -54,6 +55,7 @@
      <Compile Include="Assets\Scripts\ParticleController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerLevel2Controller.cs" />
+     <Compile Include="Assets\Scripts\PlayerLevel3Controller.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
