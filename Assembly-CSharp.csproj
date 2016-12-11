@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\EnemyGhostController.cs" />
      <Compile Include="Assets\Scripts\EnemyShipController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GameMenuController.cs" />
      <Compile Include="Assets\Scripts\KillScript.cs" />
      <Compile Include="Assets\Scripts\ParticleController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

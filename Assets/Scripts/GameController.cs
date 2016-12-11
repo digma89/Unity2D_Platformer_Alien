@@ -67,7 +67,25 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	}
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            this._scoreValue = 0;
+            PlayerPrefs.SetInt("HiScore", _scoreValue);
+            SceneManager.LoadScene("MainScene");
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            this._scoreValue = 0;
+            PlayerPrefs.SetInt("HiScore", _scoreValue);
+            SceneManager.LoadScene("Level_2");
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            this._scoreValue = 0;
+            PlayerPrefs.SetInt("HiScore", _scoreValue);
+            SceneManager.LoadScene("Level_3");
+        }
+    }
 
     private void _endGame(){
         this.GameOverLabel.gameObject.SetActive(true);
