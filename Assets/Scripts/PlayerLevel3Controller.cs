@@ -41,9 +41,9 @@ public class PlayerLevel3Controller : MonoBehaviour {
     // Update is called once per frame (Physics)
     void FixedUpdate() {
 
-        if (Input.GetMouseButtonDown(0)) {
+      /*  if (Input.GetMouseButtonDown(0)) {
             var clone = Instantiate(BulletObject, this._transform.position, this._transform.rotation);
-        }
+        }*/
 
         if (_isGrounded) {
             //check if input is present for movment
@@ -161,6 +161,15 @@ public class PlayerLevel3Controller : MonoBehaviour {
             this.CoinSound.Play();
             this._gameController.ScoreValue += 100;
             Destroy(other.gameObject);
+
+        }
+
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            //move player position to spawn point's position
+            this.DeathPlaneSound.Play();
+            this._transform.position = this._spawnPoint.transform.position;
+            this._gameController.LivesValue -= 1;
         }
 
     }
