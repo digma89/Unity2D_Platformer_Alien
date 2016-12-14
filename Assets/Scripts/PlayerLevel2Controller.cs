@@ -41,7 +41,11 @@ public class PlayerLevel2Controller : MonoBehaviour {
     // Update is called once per frame (Physics)
     void FixedUpdate() {
 
-       if (_isGrounded) {
+        /*  if (Input.GetMouseButtonDown(0)) {
+            var clone = Instantiate(BulletObject, this._transform.position, this._transform.rotation);
+        }*/
+
+        if (_isGrounded) {
             //check if input is present for movment
             this._move = Input.GetAxis("Horizontal");
             if (this._move > 0f) {
